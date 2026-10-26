@@ -17,6 +17,7 @@
         gdb
         gf
         entr
+        wayland-scanner
       ];
 
       nativeBuildInputs = with pkgs; [

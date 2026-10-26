@@ -1,6 +1,6 @@
 CC := gcc
 LIBS := wayland-client xkbcommon
-CFLAGS := -Wall $(foreach lib,$(LIBS),$$(pkg-config --cflags $(lib)))
+CFLAGS := -g -Wall $(foreach lib,$(LIBS),$$(pkg-config --cflags $(lib)))
 LDFLAGS := -lm $(foreach lib,$(LIBS),$$(pkg-config --libs $(lib)))
 
 #Binary folder
@@ -14,7 +14,7 @@ OBJS := $(SRCS:.c=.o)
 
 
 # default recipe
-all: clean app
+all: app clean
 
 # recipe for building the final executable
 app: $(OBJS)
