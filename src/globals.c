@@ -1,3 +1,4 @@
+#include "state.h"
 #include <stdio.h>
 #include <string.h>
 #include <wayland-client.h>
@@ -5,7 +6,9 @@
 static void registry_spit_globals(void *data, struct wl_registry *wl_registry,
                                   uint32_t name, const char *interface,
                                   uint32_t version) {
-  if (strncmp(interface, "wl_", 3) != 0 && strncmp(interface, "xdg_", 4) != 0)
+  struct app_state *state = data;
+  if (!state->verbose && strncmp(interface, "wl_", 3) != 0 &&
+      strncmp(interface, "xdg_", 4) != 0)
     return;
   printf("%s: v%d\n", interface, version);
 }
